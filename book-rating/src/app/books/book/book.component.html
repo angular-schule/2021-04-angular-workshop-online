@@ -6,16 +6,15 @@
     />
     <div class="card-title">
       <h2>
-        {{ book.title }}
+        {{ book?.title }}
         <span class="badge badge-secondary">{{ book.rating }}</span>
       </h2>
     </div>
-
     <div>
         <span *ngFor="let x of getStarsArray()">⭐️</span>
     </div>
 
-    <p>Preis: {{ book.price }}</p>
+    <p>Preis: {{ book?.price }}</p>
     <p>{{ book.description }}</p>
 
     <button type="button" (click)="doRateUp()" class="btn btn-success"> + </button>

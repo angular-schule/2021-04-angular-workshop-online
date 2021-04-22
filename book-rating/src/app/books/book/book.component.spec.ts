@@ -22,4 +22,6 @@ describe('BookComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should emit an event for doRateUp()', () => {});
 });
