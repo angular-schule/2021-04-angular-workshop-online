@@ -14,7 +14,7 @@
         <span *ngFor="let x of getStarsArray()">⭐️</span>
     </div>
 
-    <p>Preis: {{ book?.price }}</p>
+    <p>Preis: {{ book?.price | currency:'EUR' }}</p>
     <p>{{ book.description }}</p>
 
     <button type="button" (click)="doRateUp()" class="btn btn-success"> + </button>
