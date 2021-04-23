@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Book } from '../shared/book';
 
 import { BookComponent } from './book.component';
 
@@ -16,6 +17,16 @@ describe('BookComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(BookComponent);
     component = fixture.componentInstance;
+
+    // Buch belegen: vor detectChanges(), damit Buch vorhanden ist und keine Fehler beim Rendern auftreten
+    component.book = {
+      isbn: '',
+      title: '',
+      description: '',
+      price: 2,
+      rating: 3
+    };
+
     fixture.detectChanges();
   });
 
@@ -23,5 +34,16 @@ describe('BookComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should emit an event for doRateUp()', () => {});
+  it('should emit an event for doRateUp()', () => {
+    let emittedBook: Book;
+
+    component.rateUp.subscribe(book => {
+      emittedBook = book;
+    });
+
+    component.doRateUp();
+
+    expect(emittedBook).toBeTruthy();
+    expect(emittedBook).toEqual(component.book);
+  });
 });
