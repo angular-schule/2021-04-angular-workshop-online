@@ -17,7 +17,7 @@ describe('BookComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(BookComponent);
     component = fixture.componentInstance;
-
+    
     // Buch belegen: vor detectChanges(), damit Buch vorhanden ist und keine Fehler beim Rendern auftreten
     component.book = {
       isbn: '',

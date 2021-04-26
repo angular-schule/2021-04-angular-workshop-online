@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { Book } from '../shared/book';
 import { BookRatingService } from '../shared/book-rating.service';
+import { BookStoreService } from '../shared/book-store.service';
 
 import { DashboardComponent } from './dashboard.component';
 
@@ -10,11 +11,16 @@ describe('DashboardComponent', () => {
   let component: DashboardComponent;
   let fixture: ComponentFixture<DashboardComponent>;
   let ratingMock: Partial<BookRatingService>;
+  let storeMock: Partial<BookStoreService>;
   let book: Book;
 
   beforeEach(async () => {
     ratingMock = {
       rateUp: b => b
+    };
+
+    storeMock = {
+      getAll: () => of([])
     };
 
     book = {
@@ -30,7 +36,8 @@ describe('DashboardComponent', () => {
       schemas: [NO_ERRORS_SCHEMA], // Shallow Component Test: für fehlende Kindkomponenten keinen Fehler werfen
       providers: [
         // BRS ersetzen: immer wenn BRS angefordert wird, wird stattdessen ratingMock asgeliefert
-        { provide: BookRatingService, useValue: ratingMock }
+        { provide: BookRatingService, useValue: ratingMock },
+        { provide: BookStoreService, useValue: storeMock }
       ]
     })
     .compileComponents();
