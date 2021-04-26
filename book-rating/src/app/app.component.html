@@ -1,7 +1,12 @@
 <div class="container">
   <h1>{{ title }}</h1>
 
+  <nav>
+    <a routerLink="/books" class="mr-3">Dashboard</a>
+    <a routerLink="/books/search" class="mr-3">Suche</a>
+    <a routerLink="/books/create" class="mr-3">Anlegen</a>
+  </nav>
+
   <router-outlet></router-outlet>
-  <router-outlet name="sec"></router-outlet>
 
 </div>
