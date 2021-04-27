@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Book } from '../shared/book';
 
 @Component({
@@ -24,6 +24,11 @@ export class BookFormComponent implements OnInit {
       title: new FormControl('', Validators.required),
       description: new FormControl(''),
       price: new FormControl(1, Validators.min(1)),
+      authors: new FormArray([
+        new FormControl(),
+        new FormControl(),
+        new FormControl(),
+      ])
     });
   }
 
