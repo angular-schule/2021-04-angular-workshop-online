@@ -18,6 +18,7 @@ export class BookDetailsComponent implements OnInit {
     // Synchroner Weg:
     // const isbn = this.route.snapshot.paramMap.get('isbn'); // path: 'books/:isbn'
 
+    // TODO: verschachteltes Subscribe auflösen
     this.route.paramMap.subscribe(params => {
       const isbn = params.get('isbn');
       this.bs.getSingle(isbn).subscribe(book => this.book = book);
